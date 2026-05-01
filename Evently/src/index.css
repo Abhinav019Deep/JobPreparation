@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: #0a0a0f;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Seat styles */
+.seat {
+  width: 30px;
+  height: 26px;
+  border-radius: 5px 5px 3px 3px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border: none;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.seat:hover:not(.seat-booked):not(.seat-held) {
+  transform: scale(1.18);
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.seat-available { background-color: #22c55e; }
+.seat-booked    { background-color: #374151; cursor: not-allowed; opacity: 0.5; }
+.seat-held      { background-color: #f59e0b; cursor: not-allowed; }
+.seat-selected  { background-color: #3b82f6; box-shadow: 0 0 8px rgba(59,130,246,0.6); }
+.seat-premium.seat-available { background-color: #a855f7; }
+.seat-premium.seat-selected  { background-color: #7c3aed; box-shadow: 0 0 8px rgba(139,92,246,0.6); }
+
+/* Screen */
+.screen-bar {
+  background: linear-gradient(180deg, rgba(147,197,253,0.6) 0%, transparent 100%);
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+  box-shadow: 0 -6px 24px rgba(147,197,253,0.35);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #13131a; }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+
+/* Badge */
+.badge-confirmed { background: #14532d; color: #4ade80; }
+.badge-cancelled { background: #450a0a; color: #f87171; }
+.badge-pending   { background: #451a03; color: #fbbf24; }
+
+/* Animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes tickDown {
+  from { color: #4ade80; }
+  to   { color: #ef4444; }
+}
+
+.anim-fade-up  { animation: fadeSlideUp 0.4s ease both; }
+.anim-scale-in { animation: scaleIn 0.35s ease both; }
