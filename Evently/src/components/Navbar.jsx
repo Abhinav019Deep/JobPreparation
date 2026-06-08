@@ -58,7 +58,7 @@ export default function Navbar() {
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-400 hover:text-white transition-colors"
                 style={{ background: '#1c1c26', border: '1px solid #2a2a3a' }}>
                 <LogOut size={14} />
-                <span className="hidden sm:inline">Logout</span>
+                <span className="hidden sm:inline">Logout from Evently</span>
               </button>
             </>
           ) : (
